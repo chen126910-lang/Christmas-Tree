@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>璀璨圣诞树 · Merry Christmas</title>
+    <meta name="description" content="一棵由粒子点亮的圣诞树：相册、音乐、双语与倒计时。A starlit Christmas tree you can decorate, rotate and keep." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070b18'/%3E%3Cpath d='M16 4l2.6 6.4 6.9.5-5.3 4.4 1.7 6.7L16 18.6l-5.9 3.4 1.7-6.7-5.3-4.4 6.9-.5z' fill='%23ffd98a'/%3E%3C/svg%3E" />
+    <script>
+      /* Let "save this frame" read the WebGL canvas back. Must run before the app creates it. */
+      (function () {
+        var original = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+          if (typeof type === "string" && type.indexOf("webgl") === 0) {
+            attrs = Object.assign({}, attrs, { preserveDrawingBuffer: true });
+          }
+          return original.call(this, type, attrs);
+        };
+      })();
+    </script>
+    <!-- Tailwind CSS is bundled locally via @tailwindcss/vite; MediaPipe scripts load on-demand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #070b18;
+        font-family: 'Noto Serif SC', 'Playfair Display', serif;
+      }
+      canvas {
+        touch-action: none;
+      }
+      .font-display {
+        font-family: 'Playfair Display', 'Noto Serif SC', serif;
+      }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,217,138,0.35); border-radius: 2px; }
+      @keyframes shimmer {
+        0%, 100% { opacity: 0.55; }
+        50% { opacity: 1; }
+      }
+      .shimmer { animation: shimmer 3s ease-in-out infinite; }
+      @keyframes snowfall-gradient {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 0% 200%; }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-CZPyPNXc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BeE7YxDE.css">
+    <link rel="stylesheet" href="./overlay.css">
+    <script src="./overlay.js" defer></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
